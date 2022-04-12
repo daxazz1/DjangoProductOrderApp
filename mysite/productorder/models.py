@@ -15,7 +15,7 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
-    customer_id = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer_id = models.ForeignKey('Customer', on_delete=models.SET_NULL, null=True)
     date = models.DateField('Date', null=True, blank=True)
 
     ORDER_STATUS = (('e', 'Entered'), ('w', 'Waiting'), ('p', 'In progress'), ('c', 'Completed'),)
@@ -24,9 +24,9 @@ class Order(models.Model):
     def __str__(self):
         return f"{self.customer_id.f_name} {self.customer_id.l_name}"
 
-    class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
+    # class Meta:
+    #     verbose_name = 'Order'
+    #     verbose_name_plural = 'Orders'
 
 class Product_order(models.Model):
     order_id = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)
